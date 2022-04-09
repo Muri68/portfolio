@@ -1,0 +1,254 @@
+{% extends "baseHome.html" %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block content %}
+<!--==================== HOME ====================-->
+<div class="header_intro_2">
+    <div class="intro-wrapper_2">
+        <div class="container">  
+            <div class="row">        
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="intro-text_2">
+                        <h1 class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".2s">SFCode</h1>
+                        <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">Simply Free Code.</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<!--============================ About =============================-->
+<section class="teacher-details-wrapper" id="about">
+    <div class="container">
+                <div class="title">
+                    <h2 class=" wow fadeInUp" data-wow-duration="2s" data-wow-delay=".2s">About me</h2>
+                    <p class=" wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">My technical level.</p>
+                </div>
+        <div class="row">
+            <div class="col-sm-4 teacher-detail-left">
+                <div class="teacher_info_wrapper">
+                    <div class="teacger-image">
+                        <img src="{% static 'images/me.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="social_wraper">
+                        <ul class="social-items d-flex list-unstyled">
+                            <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter twitt-icon"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in link-icon"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram ins-icon"></i></a></li>
+                        </ul>
+                    </div> 
+                    <div class="teacher-skills">
+                        <div class="skill-single">
+                            <span>Python - <span class="skills_lavel">60%</span></span>
+                            <span><span style="width:60%;"></span></span>
+                        </div>
+                        <div class="skill-single">
+                            <span>Django - <span class="skills_lavel">70%</span></span>
+                            <span><span style="width:70%;"></span></span>
+                        </div>
+                        <div class="skill-single">
+                            <span>JavaScript - <span class="skills_lavel">45%</span></span>
+                            <span><span style="width:45%;"></span></span>
+                        </div>
+                        <div class="skill-single">
+                            <span>HTML - <span class="skills_lavel">90%</span></span>
+                            <span><span style="width:90%;"></span></span>
+                        </div>
+                        <div class="skill-single">
+                            <span>CSS3 - <span class="skills_lavel">75%</span></span>
+                            <span><span style="width:75%;"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ends: .about-detail-left -->
+            <div class="col-sm-8 teacher-detail-right">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="teacher-info">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <h3>Name :</h3>
+                                    <span>Isyaku Murtala Abdulhamid</span>
+                                </li>
+                                <li>
+                                    <h3>Experience :</h3>
+                                    <span>3 Years of experience working with Django</span>
+                                </li>
+                                <li>
+                                    <h3>Language :</h3>
+                                    <span>English, Hausa, Arabic</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="teacher-contact">
+                            <h2>Contact Me</h2>
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="email" name="email" placeholder="Email" required>
+                                <input type="text" name="subject" placeholder="Subject">
+                                <textarea name="message" placeholder="Your Message" required></textarea>
+                                <button type="submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="courses_tab_wrapper">  
+                            <div class="courses_details_nav_tabs">     
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" href="#information" role="tab" data-toggle="tab"><i class="flaticon-info-sign"></i>About Me</a></li>
+                                </ul>
+                            </div>   
+
+                            <!-- Tab panes -->
+                            <div class="tab_contents tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active show" id="information">
+                                    <p>I'm a self taught Web developer, with knowledge and years of experience, working with Python, Django and other technologies, delivering quality work.</p>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <!-- Ends: .about-detail-right -->
+        </div>
+    </div>
+</section>
+
+
+<!--==================== PORFOLIO ====================-->
+<!--========={ Potfolio }========-->
+<section class="popular_cources" id="potfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="title">
+                    <h2 class=" wow fadeInUp" data-wow-duration="2s" data-wow-delay=".2s">Portfolio</h2>
+                    <p class=" wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">Most recent work.</p>
+                </div>
+                <div id="latest_blog_carousel" class="owl-carousel">
+                    {% if projects %}
+                    {% for i in projects %}
+                       <div class="review_singel wow fadeIn" data-wow-duration="2s" data-wow-delay=".5s">
+                            <div class="blog-img">
+                                <img src="{{ i.project_image.url }}" alt="" class="img-fluid">
+                            </div>
+                            <div class="blog-title">
+                                <div class="shape"></div>
+                                <h3><a href="{% url 'single-project' i.slug %}" title="">{{ i.project_title }}</a></h3>
+                                <a href="{% url 'project-category' i.category.slug %}" title="">{{ i.category }}</a>
+                                <p>{{ i.project_description|truncatechars:100 }}.</p>
+                                <div class="cources_btn d-flex justify-content-between">
+                                   <a href="{% url 'single-project' i.slug %}" title="" class="apply_btn">Read more<i
+                                           class="flaticon-angle-arrow-pointing-to-right"></i></a>
+                                </div>                   
+                            </div>   
+                        </div>}
+                    {% endfor %}
+                    {% else %}
+                        <code class="text-center">No project posted yet!</code>
+                    {% endif %}
+                </div>
+            </div>             
+        </div>
+    </div>
+</section>
+<!-- End Potfolio -->
+
+
+<!--==================== PROJECT IN MIND ====================-->
+<!--========={ Project In Mind }========-->
+<section class="video_3" id="project-in-mind">
+    <div class="container">            
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="title">
+                    <h2 class=" wow fadeInUp" data-wow-duration="2s" data-wow-delay=".2s">Upcoming Project</h2>
+                    <p class=" wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">Project in mind.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                {% if projects %}
+                {% for item in project_in_mind %}
+                <div class="video_wrapper">
+                    <div class="video_wrapper_full js-videoWrapper">
+                        <iframe class="videoIframe"  allowfullscreen data-src="{% video item.project_demo_video %}"></iframe>                     
+                    </div>
+                 </div>
+                 {% endfor %}
+                 {% else %}
+                    <code class="text-center">No Upcoming project posted yet!</code>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section><!-- End Project In Mind -->
+
+
+<!--==================== CONTACT ====================-->
+<!--========={ Contact Info }========-->
+<section class="contact_info_wrapper" id="contact">
+    <div class="container">  
+        <div class="row">                  
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 p-0">
+               <div class="event_details">
+                    <div class="details_title">
+                        <h3>Get In Touch</h3>
+                    </div>
+                    <div class="event_location_info">                  
+                        <ul class="list-unstyled">
+                            <li><p class="hall_location">Location</p></li>                        
+                            <li><p>Sarbi town</p><span>Minjibir LGA<br> Kano, Nigera</span></li>
+                            <li><p>Email</p><span>sfcode@gmail.com</span></li>                        
+                            <li><p>Phone</p><span>+234 806 473 2356</span><br><span>+234 805 316 9889</span></li>
+                        </ul>
+                        <img src="{% static 'images/contact.png' %}" alt="" class="contact__info_shpae">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!-- End Contact Info -->
+
+
+<!--========={ Contact Form }========-->
+<section class="contact_form">    
+    <div class="leave_comment_wrapper">
+        <div class="container">  
+            <div class="row">                  
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto p-0">
+                     <div class="leave_comment">
+                        <div id="message"></div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 form-group">
+                                    <input type="email" class="form-control" placeholder="Email" name="email" id="email">
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 form-group">
+                                    <input type="text" class="form-control"  placeholder="Subject" name="subject" id="subject">
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 form-group">
+                                    <textarea class="form-control" placeholder="Message" name="message" id="comments"></textarea>
+                                </div>
+
+                                 <div class="col-12 col-sm-12 col-md-12 submit-btn">
+                                    <button type="submit" class="text-center" id="submit">Send</button>
+                                </div>
+                            </div>
+                        </form>   
+                    </div> 
+                </div>               
+            </div>
+        </div>
+    </div>
+</section> <!-- End Contact Form -->
+<!--==================== CONTACT ====================-->
+
+
+{% endblock %}

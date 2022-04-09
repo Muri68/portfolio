@@ -1,0 +1,84 @@
+{% load static %}
+    <html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Getnajmul">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFCode</title>
+    <!-- <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> -->
+    <!-- Goole Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/assets/bootstrap.min.css' %}">
+    <!-- Font awsome CSS -->
+    <link rel="stylesheet" href="{% static 'css/assets/font-awesome.min.css' %}">    
+    <link rel="stylesheet" href="{% static 'css/assets/flaticon.css' %}">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="{% static 'css/assets/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/assets/owl.theme.css' %}">     
+    <link rel="stylesheet" href="{% static 'css/assets/animate.css' %}"> 
+    <!-- Mean Menu-->
+    <link rel="stylesheet" href="{% static 'css/assets/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/assets/preloader.css' %}"/>    
+    <!-- main style-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">   
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+                     
+    <style>
+        .video_3 .video_wrapper {
+            border: 20px solid #2f2f2f;
+            text-align: center;
+            background: transparent url("../images/coming_soon.png") no-repeat center center/cover;
+            position: relative;
+            min-height: 535px;
+            width: 100%;
+            z-index: 1;
+            box-shadow: 0px 20px 70px 0px rgba(47, 47, 47, 0.15);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+    <body class="teachers_profile contact_page courses_1">
+        <!-- Preloader -->
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+
+    <!--=============== NAVBAR ===============-->
+        {% include "_partials/navbar.html" %}
+
+        {% block content %}
+
+        {% endblock %}
+
+        <!--=============== FOOTER ===============-->
+        {% include "_partials/footer.html" %}
+
+        <!--=============== SCROLL UP ===============-->
+        <section id="scroll-top" class="scroll-top">
+            <h2>&nbsp;</h2>
+            <div class="to-top pos-rtive">
+                <a href="#"><i class = "flaticon-up-arrow"></i></a>
+            </div><!-- Scroll to top button end-->
+        </section>
+            <!--  JavaScript -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>     
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>  
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>  
+    <script src="{% static 'js/slick.min.js' %}"></script>  
+    <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>  
+    <script src="{% static 'js/wow.min.js' %}"></script> 
+    <script src="{% static 'js/custom.js' %}"></script>
+    </body>
+</html>
+
+

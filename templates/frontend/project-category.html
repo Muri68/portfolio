@@ -1,0 +1,51 @@
+{% extends "baseHome.html" %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block content %}
+<!--========={ Title Header }========-->
+<section class="sub_header_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-md-12 col-lg-12">
+                <div class="intro_text">
+                    <h1>{{ category.title }}</h1>
+                    <div class="pages_linka">
+                        <a href="{% url 'home' %}" title="">Home</a>
+                        <a href="#" title="" class="active">{{ category.title }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End title Header -->
+
+<!--========={ Popular Courses }========-->
+<section class="popular_cources_1">
+    <div class="container">
+        <div class="row">
+            {% for i in category.projects.all %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="courses_single wow fadeIn" data-wow-duration="2s" data-wow-delay=".1s">
+                    <div class="blog-img">
+                        <img src="{{ i.project_image.url }}" alt="" class="img-fluid">
+                    </div>
+                    <div class="blog-title">
+                        <div class="shape"></div>
+                        <h3><a href="{% url 'single-project' i.slug %}" title="">{{ i.project_title }}</a></h3>
+                        <span>{{ i.category }}</span>
+                        <p>{{ i.project_description|truncatechars:100 }}.</p>
+                        <div class="cources_btn d-flex justify-content-between">
+                           <a href="{% url 'single-project' i.slug %}" title="" class="apply_btn">Read more<i
+                                   class="flaticon-angle-arrow-pointing-to-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- End Popular Courses -->
+
+{% endblock %}

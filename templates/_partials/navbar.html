@@ -1,0 +1,36 @@
+{% load static %}
+
+<!--========={ SFCode Nav }========-->
+<header id="header" class="header_2">
+    <div class="header-top">
+
+        <div class="eco_nav">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light bg-faded">
+                    <a class="navbar-brand active" href="{% url 'home' %}">SF<span style="color: #FF1949">Code</span></a>
+                    <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav ml-auto">
+                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                            <li class="nav-item single_nav"><a href="#about" class="nav-link">About</a></li>
+                            <li class="nav-item single_nav"><a href="#potfolio" class="nav-link dropdown_icon">Potfolio</a></li>
+                            <li class="nav-item single_nav"><a href="#contact" class="nav-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="mr-auto sign-in-option">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><i class="search_btn"><img src="{% static 'images/search.png' %}" alt=""></i>
+                                <div id="search">
+                                     <form>
+                                         <input type="search" value="" placeholder="Search here...."  required/>
+                                         <button type="submit" class="btn btn_common blue">Search</button>
+                                     </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav><!-- END NAVBAR -->
+            </div> 
+        </div>
+    </div>  
+</header> 
+<!-- End Nav -->

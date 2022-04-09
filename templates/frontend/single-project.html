@@ -1,0 +1,44 @@
+{% extends "baseHome.html" %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block content %}
+<style>
+
+    .about_4 .about_top_wrapper .video_wrapper {
+        background: transparent url("{% static 'images/coming_soon.png' %}") no-repeat center center/cover;
+        position: relative;
+        min-height: 615px;
+        z-index: 1;
+    }
+</style>
+
+
+<section class="about_4">
+    <div class="about_top_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="title">
+                        <h2 class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".2s">{{ project.project_title }}</h2>
+                        <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">{{ project.project_description }}</p>
+                        <a href="#" class="nav-link join_now wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">GitHub <i class="fas fa-chevron-right"></i></a>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+                    <div class="video_wrapper">
+                    <div class="video_wrapper_full js-videoWrapper">
+                        <iframe class="videoIframe"  allowfullscreen
+                                data-src="{% video project.project_demo_video %}"></iframe>
+                    </div>
+                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End About Us -->
+{% endblock %}
